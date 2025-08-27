@@ -58,9 +58,86 @@
 -->
 ---
 <!--1,2일차 내용 작성-->
-## ✨ 트러블 슈팅
+## ✨ 트러블 슈팅 (1)
 
-<br/>
+1. 문제점
+
+   `git commit -m "git 수정 후 다시 올리기"` 명령을 입력했지만  
+   `Changes not staged for commit` 메시지가 뜨며 커밋이 되지 않음  
+
+2. 해결 방안
+
+   - 수정된 파일을 스테이징 영역에 올리기  
+     ```bash
+     git add day001.md
+     ```
+   - 커밋 명령 재실행  
+     ```bash
+     git commit -m "day001.md 내용 수정 후 커밋"
+     ```
+
+3. 느낀 점
+
+   단 한 줄의 차이도 스테이징 과정을 거치지 않으면 기록되지 않는다는 점이 새삼 체감되었습니다.  
+   앞으로는 파일을 건드린 뒤엔 반드시 `git status`로 상태를 체크하는 습관을 들여야 할 것 같습니다.  
+
+---
+
+## ✨ 트러블슈팅 (2)
+
+1. 문제점
+
+   `git pull origin master` 수행 중 자동 병합(auto-merging) 시  
+   `CONFLICT (content): Merge conflict in day002.md` 라는 충돌이 발생함  
+
+2. 해결 방안
+
+   1. 충돌 발생 파일 열기  
+      ```bash
+      vim day002.md
+      ```
+   2. `<<<<<<`, `======`, `>>>>>>` 구분자를 보고 원하는 내용으로 수정  
+   3. 수정 후 파일 저장 및 종료  
+   4. 병합 완료 표시  
+      ```bash
+      git add day002.md
+      git commit -m "day002.md 머지 충돌 해결"
+      ```
+
+3. 느낀 점
+
+   협업 중 다른 사람과 동시에 같은 라인을 건드리면 반드시 충돌이 나고  
+   그 순간이야말로 커밋 전후 차이를 확인해야 한다는 것을 알게 되었습니다. 
+
+---
+
+## ✨ 트러블슈팅 (3)
+
+1. 문제점
+
+   충돌 해결 없이 `git pull`을 또 수행하거나  
+   `MERGE_HEAD exists` 상태에서 다른 명령어를 시도해 오류 발생  
+   ```
+   error: You have not concluded your merge (MERGE_HEAD exists).
+   hint: Please, commit your changes before merging.
+   fatal: Exiting because of unfinished merge.
+   ```
+
+2. 해결 방안
+
+   - 현재 병합 중단 후 초기 상태로 되돌리기  
+     ```bash
+     git merge --abort
+     ```
+   - 또는 남아 있는 충돌 수정 후 커밋으로 병합 완료  
+     ```bash
+     충돌 파일 수정 → git add <file> → git commit
+     ```
+
+3. 느낀 점
+
+   미완료된 머지가 있으면 이후 모든 작업이 잠식된다는 걸 느꼈습니다.  
+   중간에 막혔을 땐 당황하지 말고 `git status`와 `git merge --abort`로 상황을 정리하는 게 핵심입니다.
 
 ---
 ## ✨ 참고 문헌
