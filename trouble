@@ -11,4 +11,12 @@ Automatic merge failed; fix conflicts and then commit the result.
 
 발생 문제: 
 해결 방안:
+git add day005.md
+git commit
+git pull --rebase
+--rebase: 로컬 변경 사항을 원격 변경 사항 위에 덮기
+--force: rebase랑 반대
+git diff - 다른 사항 확인
+diff 사용 후 q - 빠져나오기
+git status - 상태 확인
 배운 점:
