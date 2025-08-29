@@ -1,0 +1,23 @@
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (2/2), done.
+remote: Total 3 (delta 2), reused 2 (delta 2), pack-reused 1 (from 1)
+Unpacking objects: 100% (3/3), 946 bytes | 13.00 KiB/s, done.
+From https://github.com/kangseoyun-s/fullstack_seohyun
+ * branch            master     -> FETCH_HEAD
+   a53c6f1..73dabaf  master     -> origin/master
+Auto-merging day005.md
+CONFLICT (content): Merge conflict in day005.md
+Automatic merge failed; fix conflicts and then commit the result.
+
+발생 문제: 
+해결 방안:
+git add day005.md
+git commit
+git pull --rebase
+--rebase: 로컬 변경 사항을 원격 변경 사항 위에 덮기
+--force: rebase랑 반대
+git diff - 다른 사항 확인
+diff 사용 후 q - 빠져나오기
+diff로 사용하기 어려울 때 git add . ~ git push origin master 사용하기
+git status - 상태 확인
+배운 점:
