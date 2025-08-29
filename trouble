@@ -18,5 +18,6 @@ git pull --rebase
 --force: rebase랑 반대
 git diff - 다른 사항 확인
 diff 사용 후 q - 빠져나오기
+diff로 사용하기 어려울 때 git add . ~ git push origin master 사용하기
 git status - 상태 확인
 배운 점:
