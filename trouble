@@ -1,0 +1,10 @@
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (2/2), done.
+remote: Total 3 (delta 2), reused 2 (delta 2), pack-reused 1 (from 1)
+Unpacking objects: 100% (3/3), 946 bytes | 13.00 KiB/s, done.
+From https://github.com/kangseoyun-s/fullstack_seohyun
+ * branch            master     -> FETCH_HEAD
+   a53c6f1..73dabaf  master     -> origin/master
+Auto-merging day005.md
+CONFLICT (content): Merge conflict in day005.md
+Automatic merge failed; fix conflicts and then commit the result.
