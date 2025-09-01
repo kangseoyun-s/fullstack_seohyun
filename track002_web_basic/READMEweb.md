@@ -44,7 +44,6 @@
 | **Node.js, Express, MongoDB 기초 익히기** | 서버 개발, REST API 설계, 데이터 처리 | 로그인/회원가입 기능, 게시판 CRUD 구현 |
 | **협업과 버전 관리 (Git & GitHub)** | 코드 이력 관리, 브랜치 전략, 협업 커뮤니케이션 | 팀 프로젝트에서 충돌 해결, Pull Request 리뷰 |
 
----
 
 
 <!--JAVA, HTML+CSS+JS/JQUERY...-->
