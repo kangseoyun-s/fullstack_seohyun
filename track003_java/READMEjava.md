@@ -53,87 +53,123 @@
 <br/>
 -->
 ---
-<!--1,2일차 내용 작성-->
-## ✨ 트러블 슈팅 (1)
-
-1. 문제점
-
-   `git commit -m "git 수정 후 다시 올리기"` 명령을 입력했지만  
-   `Changes not staged for commit` 메시지가 뜨며 커밋이 되지 않음  
-
-2. 해결 방안
-
-   - 수정된 파일을 스테이징 영역에 올리기  
-     ```bash
-     git add day001.md
-     ```
-   - 커밋 명령 재실행  
-     ```bash
-     git commit -m "day001.md 내용 수정 후 커밋"
-     ```
-
-3. 느낀 점
-
-   단 한 줄의 차이도 스테이징 과정을 거치지 않으면 기록되지 않는다는 점이 새삼 체감되었습니다.  
-   앞으로는 파일을 건드린 뒤엔 반드시 `git status`로 상태를 체크하는 습관을 들여야 할 것 같습니다.  
+Java에서 자주 마주치는 오류들은 대부분 **문법 실수**, **예외 처리 미흡**, 또는 **환경 설정 문제**에서 비롯됩니다. 아래에 대표적인 오류들과 그 원인을 정리해봤어요:
 
 ---
 
-## ✨ 트러블슈팅 (2)
+### 💥 자주 발생하는 Java 오류
 
-1. 문제점
-
-   `git pull origin master` 수행 중 자동 병합(auto-merging) 시  
-   `CONFLICT (content): Merge conflict in day002.md` 라는 충돌이 발생함  
-
-2. 해결 방안
-
-   1. 충돌 발생 파일 열기  
-      ```bash
-      vim day002.md
-      ```
-   2. `<<<<<<`, `======`, `>>>>>>` 구분자를 보고 원하는 내용으로 수정  
-   3. 수정 후 파일 저장 및 종료  
-   4. 병합 완료 표시  
-      ```bash
-      git add day002.md
-      git commit -m "day002.md 머지 충돌 해결"
-      ```
-
-3. 느낀 점
-
-   협업 중 다른 사람과 동시에 같은 라인을 건드리면 반드시 충돌이 나고  
-   그 순간이야말로 커밋 전후 차이를 확인해야 한다는 것을 알게 되었습니다. 
+| 오류 메시지 | 원인 | 해결 방법 |
+|------------|------|-----------|
+| `cannot find symbol` | 변수나 메서드 이름 오타, 선언 누락 | 선언 여부 확인, 대소문자 주의 |
+| `';' expected` | 세미콜론 누락 | 문장 끝에 `;` 추가 |
+| `NoSuchMethodError: main` | `main()` 메서드 선언 오류 | `public static void main(String[] args)` 정확히 작성 |
+| `NoClassDefFoundError` | 클래스 파일 누락 또는 클래스패스 오류 | `.class` 파일 존재 여부 및 경로 확인 |
+| `illegal start of expression` | 문법 오류 (예: 잘못된 키워드 사용) | 문장 구조 점검, 괄호 확인 |
+| `class, interface, or enum expected` | 괄호 불일치 또는 클래스 외부 코드 존재 | 괄호 개수 확인, 클래스 내부에 코드 작성 |
 
 ---
 
-## ✨ 트러블슈팅 (3)
+좋아요! 위에 정리된 오류들은 Java 초보자뿐 아니라 실무에서도 자주 마주치는 핵심적인 문제들이에요. 각각의 오류에 대해 **실제 코드 예시**와 함께 **해결 방안**을 더 구체적으로 설명해볼게요.
 
-1. 문제점
+---
 
-   충돌 해결 없이 `git pull`을 또 수행하거나  
-   `MERGE_HEAD exists` 상태에서 다른 명령어를 시도해 오류 발생  
-   ```
-   error: You have not concluded your merge (MERGE_HEAD exists).
-   hint: Please, commit your changes before merging.
-   fatal: Exiting because of unfinished merge.
-   ```
+### 🔍 오류별 해결 방안과 예시
 
-2. 해결 방안
+#### 1. `cannot find symbol`
+- **원인**: 변수나 메서드 이름 오타, 선언 누락
+- **예시**:
+  ```java
+  System.out.println(nmae); // 오타: name → nmae
+  ```
+- **해결**: 변수 선언 확인, 철자 수정
+  ```java
+  String name = "Java";
+  System.out.println(name);
+  ```
 
-   - 현재 병합 중단 후 초기 상태로 되돌리기  
-     ```bash
-     git merge --abort
-     ```
-   - 또는 남아 있는 충돌 수정 후 커밋으로 병합 완료  
-     ```bash
-     충돌 파일 수정 → git add <file> → git commit
-     ```
+---
 
-3. 느낀 점
+#### 2. `';' expected`
+- **원인**: 세미콜론 누락
+- **예시**:
+  ```java
+  int a = 10  // 세미콜론 없음
+  ```
+- **해결**: 문장 끝에 `;` 추가
+  ```java
+  int a = 10;
+  ```
 
-   미완료된 머지가 있으면 이후 모든 작업이 잠식된다는 걸 느꼈습니다.  
-   중간에 막혔을 땐 당황하지 말고 `git status`와 `git merge --abort`로 상황을 정리하는 게 핵심입니다.
+---
+
+#### 3. `NoSuchMethodError: main`
+- **원인**: `main()` 메서드 선언 오류
+- **예시**:
+  ```java
+  static void main(String[] args) { } // public 누락
+  ```
+- **해결**: 정확한 시그니처 사용
+  ```java
+  public static void main(String[] args) { }
+  ```
+
+---
+
+#### 4. `NoClassDefFoundError`
+- **원인**: 클래스 파일 누락 또는 클래스패스 오류
+- **해결**:
+  - `.class` 파일이 존재하는지 확인
+  - 컴파일: `javac MyClass.java`
+  - 실행: `java MyClass`
+  - 클래스 경로 설정: `-cp` 옵션 사용
+
+---
+
+#### 5. `illegal start of expression`
+- **원인**: 문법 오류 (예: 잘못된 키워드 사용)
+- **예시**:
+  ```java
+  public class Test {
+      public void method() {
+          int if = 5; // 예약어 사용
+      }
+  }
+  ```
+- **해결**: 예약어 사용 금지, 문법 구조 점검
+  ```java
+  int value = 5;
+  ```
+
+---
+
+#### 6. `class, interface, or enum expected`
+- **원인**: 클래스 외부에 코드 존재, 괄호 불일치
+- **예시**:
+  ```java
+  int a = 10; // 클래스 밖에 존재
+  public class Test { }
+  ```
+- **해결**: 모든 실행 코드는 클래스 내부에 위치
+  ```java
+  public class Test {
+      public static void main(String[] args) {
+          int a = 10;
+      }
+  }
+  ```
+---
+
+혹시 위 오류 중 실제로 겪은 사례가 있다면, 그 코드를 보여주시면 더 구체적으로 도와드릴 수 있어요!
+
+---
+
+### 🧠 팁: 오류를 줄이는 습관
+
+- IDE의 자동완성 기능 적극 활용
+- 컴파일러 경고 무시하지 않기
+- 테스트 코드 작성으로 예외 상황 미리 점검
+- 로그와 디버깅 툴로 흐름 추적
 
 ---
 ## ✨ 참고 문헌
