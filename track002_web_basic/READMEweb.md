@@ -55,87 +55,38 @@
 <br/>
 -->
 ---
-<!--1,2일차 내용 작성-->
-## ✨ 트러블 슈팅 (1)
 
-1. 문제점
+### 🧨 웹 기초 개발자의 자주 발생하는 문제와 해결 방안
 
-   `git commit -m "git 수정 후 다시 올리기"` 명령을 입력했지만  
-   `Changes not staged for commit` 메시지가 뜨며 커밋이 되지 않음  
+| 문제 상황 | 원인 | 해결 방안 |
+|-----------|------|-----------|
+| **HTML/CSS가 브라우저에서 다르게 보임** | 브라우저 호환성 문제, CSS Reset 미적용 | Normalize.css 또는 Reset.css 적용, 크로스 브라우징 테스트 |
+| **버튼 클릭이 작동하지 않음** | JS 이벤트 연결 오류, DOM 로딩 전 실행 | `DOMContentLoaded` 이벤트 사용 또는 `defer` 속성 추가 |
+| **CORS 오류 발생** | 클라이언트와 서버 도메인이 다름 | 서버에서 CORS 허용 설정 (`Access-Control-Allow-Origin`) |
+| **API 호출 시 404/500 오류** | 잘못된 URL, 서버 미응답 | API 경로 확인, 서버 로그 분석, Postman으로 테스트 |
+| **Git 충돌 발생** | 여러 브랜치에서 같은 파일 수정 | `git pull` 후 `merge` 또는 `rebase`, 충돌 파일 수동 수정 |
+| **웹소켓 인증 실패** | JWT 토큰이 필터링되지 않음 | WebSocket 핸들러에서 직접 토큰 추출 및 인증 처리 |
+| **메시지 저장 순서 오류** | DB 저장보다 프론트 조회가 먼저 실행됨 | 백엔드에서 저장 완료 후 메시지 전송하도록 로직 순서 조정 |
+| **레이아웃 깨짐** | Flex/Grid 사용 오류, margin/padding 충돌 | 개발자 도구로 요소 확인, CSS 구조 재정비 |
+| **배포 후 화면이 안 뜸** | 빌드 경로 오류, 정적 파일 누락 | `build` 폴더 확인, 서버 설정에서 정적 파일 경로 점검 |
 
-2. 해결 방안
-
-   - 수정된 파일을 스테이징 영역에 올리기  
-     ```bash
-     git add day001.md
-     ```
-   - 커밋 명령 재실행  
-     ```bash
-     git commit -m "day001.md 내용 수정 후 커밋"
-     ```
-
-3. 느낀 점
-
-   단 한 줄의 차이도 스테이징 과정을 거치지 않으면 기록되지 않는다는 점이 새삼 체감되었습니다.  
-   앞으로는 파일을 건드린 뒤엔 반드시 `git status`로 상태를 체크하는 습관을 들여야 할 것 같습니다.  
 
 ---
 
-## ✨ 트러블슈팅 (2)
+### 💡 트러블슈팅 잘하는 습관
 
-1. 문제점
+- **문제 정의 → 원인 추론 → 해결 → 검증 → 문서화**  
+  이 5단계를 습관처럼 반복하면 실력이 빠르게 늘어요.
 
-   `git pull origin master` 수행 중 자동 병합(auto-merging) 시  
-   `CONFLICT (content): Merge conflict in day002.md` 라는 충돌이 발생함  
+- **로그 남기기**  
+  `console.log`, `logger.debug` 등으로 흐름을 추적하면 원인 파악이 쉬워져요.
 
-2. 해결 방안
+- **Postman, DevTools, GitHub 활용**  
+  도구를 잘 쓰는 것도 실력입니다. API 테스트, DOM 구조 확인, 버전 관리까지!
 
-   1. 충돌 발생 파일 열기  
-      ```bash
-      vim day002.md
-      ```
-   2. `<<<<<<`, `======`, `>>>>>>` 구분자를 보고 원하는 내용으로 수정  
-   3. 수정 후 파일 저장 및 종료  
-   4. 병합 완료 표시  
-      ```bash
-      git add day002.md
-      git commit -m "day002.md 머지 충돌 해결"
-      ```
+- **기록하는 습관**  
+  트러블슈팅 내용을 정리해두면 나중에 같은 문제를 빠르게 해결할 수 있어요.
 
-3. 느낀 점
-
-   협업 중 다른 사람과 동시에 같은 라인을 건드리면 반드시 충돌이 나고  
-   그 순간이야말로 커밋 전후 차이를 확인해야 한다는 것을 알게 되었습니다. 
-
----
-
-## ✨ 트러블슈팅 (3)
-
-1. 문제점
-
-   충돌 해결 없이 `git pull`을 또 수행하거나  
-   `MERGE_HEAD exists` 상태에서 다른 명령어를 시도해 오류 발생  
-   ```
-   error: You have not concluded your merge (MERGE_HEAD exists).
-   hint: Please, commit your changes before merging.
-   fatal: Exiting because of unfinished merge.
-   ```
-
-2. 해결 방안
-
-   - 현재 병합 중단 후 초기 상태로 되돌리기  
-     ```bash
-     git merge --abort
-     ```
-   - 또는 남아 있는 충돌 수정 후 커밋으로 병합 완료  
-     ```bash
-     충돌 파일 수정 → git add <file> → git commit
-     ```
-
-3. 느낀 점
-
-   미완료된 머지가 있으면 이후 모든 작업이 잠식된다는 걸 느꼈습니다.  
-   중간에 막혔을 땐 당황하지 말고 `git status`와 `git merge --abort`로 상황을 정리하는 게 핵심입니다.
 
 ---
 ## ✨ 참고 문헌
