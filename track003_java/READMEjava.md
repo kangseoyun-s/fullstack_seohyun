@@ -137,7 +137,6 @@
 
 ---
 ## ✨ 참고 문헌
-- [Git 공식 문서](https://git-scm.com/doc)  
-- [Markdown 가이드](https://www.markdownguide.org/basic-syntax/)  
+- [Java 설치](https://www.oracle.com/java/technologies/?er=221886)  
+- [eclipse 설치](https://www.eclipse.org/)  
 - [VS Code 공식 사이트](https://code.visualstudio.com/)  
-- [AI 프롬프트 작성 팁](https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/prompt-engineering?tabs=chat)
