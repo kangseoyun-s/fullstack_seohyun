@@ -33,7 +33,7 @@ public class Bank_Ver1 {
 				// 사용자에게 임시 아이디와 임시 비번 입력받기
 				// 아이디와 비번이 맞다면 사용자 정보 출력
 				// 아니라면 사용자 정보를 다시 확인해 주세요
-				String tempid, temppass;
+				String tempid=null, temppass=null;
 				System.out.print("아이디 입력 > ");
 				tempid = scanner.next();
 				System.out.print("비밀 번호 입력 > ");
@@ -50,7 +50,7 @@ public class Bank_Ver1 {
 				break;
 			case 3: {
 				System.out.println("3을 입력하면 입금 기능입니다.");
-				String tempid, temppass;
+				String tempid=null, temppass=null;
 				double balance2;
 				System.out.print("아이디 입력 > ");
 				tempid = scanner.next();
@@ -68,7 +68,7 @@ public class Bank_Ver1 {
 				break;
 			case 4: {
 				System.out.println("4를 입력하면 출금 기능입니다.");
-				String tempid, temppass;
+				String tempid=null, temppass=null;
 				double balance3;
 				System.out.print("아이디 입력 > ");
 				tempid = scanner.next();
@@ -86,14 +86,16 @@ public class Bank_Ver1 {
 				break;
 			case 5: {
 				System.out.println("5를 입력하면 삭제 기능입니다.");
-				String tempid, temppass, delete;
+				String tempid, temppass;
+				char delete;
 				System.out.print("아이디 입력 > ");
 				tempid = scanner.next();
 				System.out.print("비밀 번호 입력 > ");
 				temppass = scanner.next();
 				if (id.equals(tempid) && pass.equals(temppass)) {
 					System.out.println("계좌를 삭제하시겠습니까? (Y/N)");
-					delete = scanner.next();
+					delete = scanner.next().charAt(0);
+					if(delete=='y') {id=null; pass = null; balance=0;}
 				} else {
 					System.out.println("사용자 정보를 확인해 주세요.");
 				}
