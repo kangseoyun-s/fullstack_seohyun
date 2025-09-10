@@ -1,11 +1,13 @@
-package com.company.java005_ex;
+package com.company.java005_ex_MiniProject_Bank;
 
 import java.util.Scanner;
 
-public class Bank_Ver1 {
+public class Bank_ver4_sam2 {
 	public static void main(String[] args) {
 		// 변수
-		int num=0 ; String id=null, pass = null; double balance=0;
+		int num = 0;
+		String id = "", pass = "";
+		double balance = 0;
 		Scanner scanner = new Scanner(System.in);
 		// 입력 + 처리 + 출력
 		for (;;) {
@@ -42,18 +44,14 @@ public class Bank_Ver1 {
 				if (id.equals(tempid) && pass.equals(temppass)) {
 					System.out.println("ID:" + id);
 					System.out.println("PASS:" + pass);
-					System.out.println("잔액:" + balance);
-				} else if (tempid == null && temppass == null) {
-					System.out.println("사용자 정보를 확인해 주세요.");
-				} else {
-					System.out.println("사용자 정보를 확인해 주세요.");
-				}
+					System.out.println("잔액:" + balance); 
+				} else { System.out.println("사용자 정보를 확인해 주세요."); }
 			}
 				break;
 			case 3: {
 				System.out.println("3을 입력하면 입금 기능입니다.");
-				String tempid=null, temppass=null;
-				double balance2=0;
+				String tempid = null, temppass = null;
+				double balance2 = 0;
 				System.out.print("아이디 입력 > ");
 				tempid = scanner.next();
 				System.out.print("비밀 번호 입력 > ");
@@ -63,15 +61,13 @@ public class Bank_Ver1 {
 					balance2 = scanner.nextDouble();
 					System.out.println("==입금 완료");
 					System.out.println("잔액:" + (balance += balance2));
-				} else {
-					System.out.println("사용자 정보를 확인해 주세요.");
-				}
+				} else { System.out.println("사용자 정보를 확인해 주세요."); }
 			}
 				break;
 			case 4: {
 				System.out.println("4를 입력하면 출금 기능입니다.");
-				String tempid=null, temppass=null;
-				double balance3=0;
+				String tempid = null, temppass = null;
+				double balance3 = 0;
 				System.out.print("아이디 입력 > ");
 				tempid = scanner.next();
 				System.out.print("비밀 번호 입력 > ");
@@ -81,9 +77,7 @@ public class Bank_Ver1 {
 					balance3 = scanner.nextDouble();
 					System.out.println("==출금 완료");
 					System.out.println("잔액:" + (balance -= balance3));
-				} else {
-					System.out.println("사용자 정보를 확인해 주세요.");
-				}
+				} else { System.out.println("사용자 정보를 확인해 주세요."); }
 			}
 				break;
 			case 5: {
@@ -97,10 +91,8 @@ public class Bank_Ver1 {
 				if (id.equals(tempid) && pass.equals(temppass)) {
 					System.out.println("계좌를 삭제하시겠습니까? (Y/N)");
 					delete = scanner.next().charAt(0);
-					if(delete=='y') {id=null; pass = null; balance=0;}
-				} else {
-					System.out.println("사용자 정보를 확인해 주세요.");
-				}
+					if (delete == 'y') { id = ""; pass = ""; balance = 0; }
+				} else { System.out.println("사용자 정보를 확인해 주세요."); }
 				break;
 			}
 
@@ -108,18 +100,4 @@ public class Bank_Ver1 {
 		}
 	}
 }
-
-
-
-
-/*step1 무한 반복으로 메뉴판 만들기
-  for(;;){//1-1. 무한반복 
-          // 1-2 빠져나올 조건 9
-          // 1-3 입력받은 번호가 switch or if 
-          1을 입력하면 추가 기능입니다.
-          2를 입력하면 조회 기능입니다.
-          3ㅇ
-         
-           */
-       
   
