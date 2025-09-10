@@ -1,8 +1,8 @@
-package com.company.java005_ex_MiniProject_Bank;
+package com.company.java005_ex;
 
 import java.util.Scanner;
 
-public class Bank_ver4_sam2 {
+public class Bank_Ver1{
 	public static void main(String[] args) {
 		// 변수
 		int num = 0;
