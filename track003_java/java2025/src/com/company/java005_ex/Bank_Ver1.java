@@ -75,10 +75,11 @@ public class Bank_Ver1{
 				if (id.equals(tempid) && pass.equals(temppass)) {
 					System.out.print("출금:");
 					balance3 = scanner.nextDouble();
-					System.out.println("==출금 완료");
-					System.out.println("잔액:" + (balance -= balance3));
+					if(balance - balance3>=0)
+					{System.out.println("==출금 완료" + "\n" + "잔액:" + (balance -= balance3));}
+					else {System.out.println("잔액이 모자릅니다.");}
 				} else { System.out.println("사용자 정보를 확인해 주세요."); }
-			}
+			} 
 				break;
 			case 5: {
 				System.out.println("5를 입력하면 삭제 기능입니다.");

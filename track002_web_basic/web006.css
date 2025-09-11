@@ -1,0 +1,5 @@
+@charset "UTF-8";     
+.mycontainer{width: 50%; margin: 2em auto; 
+background-color: lavenderblush; padding: 20px; border-radius: 20px;}
+.mycontainer h3{border-left:10px solid cornflowerblue; 
+padding: 2em; background-color: aliceblue;}
