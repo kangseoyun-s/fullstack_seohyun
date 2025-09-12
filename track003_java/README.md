@@ -19,7 +19,7 @@
     alt="프로필" width="250" />
 |NAME|EMAIL|GITHUB|PORTFOLIO|
 |-|-|-|-|
-|강서현|ksgkey567@gmail.com|[🔗 링크](https://github.com/kangseoyun-s/fullstack_seohyun)||
+|강서현|ksgkey567@gmail.com|[🔗 링크](https://github.com/kangseoyun-s/fullstack_seohyun)|| 
 
 
 <br/>
@@ -45,13 +45,15 @@
 
 <br/>
 
-<!--JAVA, HTML+CSS+JS/JQUERY...-->
-<!--## ✨ 포트폴리오
+
+✨ 포트폴리오
+
+JAVA 기초 [🔗 링크](https://youtu.be/jvIa20UCgMs)
 
 
 
 <br/>
--->
+
 
 ---
 
