@@ -3,131 +3,167 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>✨ 강서현 포트폴리오 ✨</title>
+  <title>🚀강서현 포트폴리오🚀</title>
   <!-- Latest compiled and minified CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Latest compiled JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
   <style>
-    div#demo {height: 300px; overflow: hidden;}
+    /* VISUAL */
+    div#demo {       height: 300px;    overflow: hidden; }
+    /* About me */
+    /* Q1. About me 각 부분들 여백 주기 */
+    .info{background-color: aliceblue; }
+    .info h4 {margin: 5% 0;}
+    /* Q2. keyword 나와 있는 ul 태그에 class="keyword" */
+    .keyWord li{list-style-type: none; margin-right: 10px;}
+    /* Q3. h3 밑줄*/
+    .info h3{ text-decoration: underline; font-size: 2.2em;}
+    .contact h3{ text-decoration: underline; font-size: 2.2em;}
   </style>
 </head>
 <body>
-  <!-- 여기에 콘텐츠를 추가하세요 -->
-   <header class="header">
+  <!-- header -->
+  <header  class="header">
     <nav class="navbar navbar-expand-sm navbar-dark bg-info">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="javascript:void(0)">Kang Seohyun</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="mynavbar">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">포트폴리오</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">About Me</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">Gallery</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">Contact</a>
-        </li>
-      </ul>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="javascript:void(0)">강서현</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mynavbar">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">포트폴리오</a>
+            </li>            
+            <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">About Me</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">Gallery</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">Contact</a>
+            </li>
+        </ul> 
+        </div>
     </div>
-  </div>
-</nav>
-   </header>
-   
-   <section class="visual">
+    </nav>
+  </header>
+
+  <!-- visual -->
+  <section  class="visual">
     <!-- Carousel -->
-<div id="demo" class="carousel slide" data-bs-ride="carousel">
+    <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
-  <!-- Indicators/dots -->
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-  </div>
-
-  <!-- The slideshow/carousel -->
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="./img/code-1839406_1280.jpg" alt="code" class="d-block w-100">
+    <!-- Indicators/dots -->
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
     </div>
-    <div class="carousel-item">
-      <img src="./img/corona-5243198_1280.jpg" alt="corona" class="d-block w-100">
+    <!-- The slideshow/carousel -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+        <img src="./img/code-1839406_1280.jpg" alt="Los Angeles" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+        <img src="./img/corona-5243198_1280.jpg" alt="Chicago" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+        <img src="./img/laptop-1512838_1280.png" alt="New York" class="d-block w-100">
+        </div>
     </div>
-    <div class="carousel-item">
-      <img src="./img/laptop-1512838_1280.png" alt="laptop" class="d-block w-100">
+    <!-- Left and right controls/icons -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
     </div>
-  </div>
+  </section>
 
-  <!-- Left and right controls/icons -->
-  <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </button>
-</div>
-
-   </section>
-  
-   <section class="info">
+  <!-- info -->
+  <section  class="info p-5">
     <div class="container">
-        <h3>About Me</h3>
+        <h3 class="p-5 text-center">About Me</h3>
         <div class="row">
-            <div class="col-sm-4">
-                <p><img src="./img/one.png" class="w-50" alt="profile"></p>
+            <div class="col-sm-4"> <!-- w-25  w-50 w-75 w-100 -->
+                <p><img src="./img/one.png" class="w-50" alt=""></p>
                 <h4>Kang Seo Hyun</h4>
                 <ul>
                     <li>ksgkey567@gmail.com</li>
-                    <li><a href="https://github.com/kangseoyun-s/fullstack_seohyun">깃허브 포트폴리오</a></li>
+                    <li><a href="https://github.com/kangseoyun-s/fullstack_seohyun"> 
+                        깃허브 포트폴리오 </a></li>
                 </ul>
-            </div>
-            <div class="col-sm-4"></div>
-            <h4>Education</h4>
-            <ul>
+            </div><!-- col-sm-4 -->
+            <div class="col-sm-4">
+                <h4>Education</h4>
+                <ul>
                     <li>MSA기반 플러터(Dart)활용 자바(JAVA)프론트엔드
                         백엔드 풀스택 웹(앱)개발 (25.08.25~ 26.02.27)</li>
                 </ul>
-            <h4>KeyWord</h4>
-            <ul class="d-flex">
-             <li><button input type="button" class="btn btn-outline-danger">열정</button></li>
-            <li><button input type="button" class="btn btn-outline-primary">성실</button></li>
-            <li><button input type="button" class="btn btn-outline-warning">끈기</button></li>
-            </ul>
+
+                <h4>KeyWord</h4>
+                <ul  class="d-flex keyWord">
+                    <li><input type="button" value="열정"  class="btn btn-danger"/></li>
+                    <li><input type="button" value="성실"  class="btn btn-warning"/></li>
+                    <li><input type="button" value="끈기"  class="btn btn-info"/></li>
+                </ul>
+            </div><!-- col-sm-4 -->
             <div class="col-sm-4">
                 <h4>SKILLS</h4>
                 <div class="progress my-3">
-    <div class="progress-bar progress-bar-striped" style="width:70%">JAVA 70%</div>
+                    <div class="progress-bar bg-info progress-bar-striped" style="width:80%">JAVA 80%</div>
+                </div> 
+                <div class="progress my-3">
+                    <div class="progress-bar bg-warning progress-bar-striped" style="width:90%">SPRING 90%</div>
+                </div> 
+                <div class="progress my-3">
+                    <div class="progress-bar bg-danger progress-bar-striped" style="width:90%">ORACLE 90%</div>
+                </div> 
+                <div class="progress my-3">
+                    <div class="progress-bar bg-primary progress-bar-striped" style="width:85%">REACT 85%</div>
+                </div>    
+                <div class="progress my-3">
+                    <div class="progress-bar bg-success progress-bar-striped" style="width:85%">AWS 85%</div>
+                </div>                              
+            </div><!-- col-sm-4 -->
+        </div> <!-- row -->
+    </div><!-- container -->
+  </section>
+
+  <!-- portfolio -->
+  <section  class="portfolio"></section>
+
+  <!-- contact -->
+  <section  class="contact m-5">
+    <div class="container">
+    <h3 class="text-center p-5">Contact me</h3>
+    <p class="text-center">열정적인 개발자에게 문의 주세요!</p>
+    <form action="/action_page.php">
+  <div class="mb-3 mt-3">
+    <label for="title" class="form-label">제목:</label>
+    <input type="text" class="form-control" id="title" placeholder="제목을 입력해 주세요." name="title">
   </div>
-  <div class="progress my-3">
-    <div class="progress-bar bg-success progress-bar-striped" style="width:80%">SPRING 80%</div>
+  <div class="mb-3">
+    <label for="Comment" class="form-label">Comments:</label>
+    <textarea class="form-control" rows="5" id="Comment" name="Comment"></textarea>
   </div>
-  <div class="progress my-3">
-    <div class="progress-bar bg-info progress-bar-striped" style="width:90%">ORACLE 90%</div>
+  <div class="mb-3 text-end">
+   <button type="submit" class="btn btn-primary">메일 보내기</button>
   </div>
-  <div class="progress my-3">
-    <div class="progress-bar bg-warning progress-bar-striped" style="width:85%">REACT 85%</div>
-  </div>
-  <div class="progress my-3">
-    <div class="progress-bar bg-danger progress-bar-striped" style="width:90%">AWS 90%</div>
-  </div>
-</div>
-    
-        </div>
+</form>
     </div>
-   </section>
-   
-   <section class="portfolio"></section>
-   
-   <section class="contact"></section>
-   
-   <footer class="footer"></footer>
+  </section>
+
+  <!-- footer -->
+  <footer  class="footer text-center bg-secondary text-white p-5">
+    &copy; copyrights company 2025 all. rights reserved
+  </footer>
+
 </body>
 </html>
