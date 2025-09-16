@@ -14,9 +14,16 @@ public class Bank_ver2 {
 		// 입력 + 처리 + 출력
 		while (num != 9) {// 9가 아니라면 무한 반복
 			System.out.println(Arrays.toString(id));
-			System.out.println(Arrays.toString(pass));
-			System.out.println(Arrays.toString(balance));
-			System.out.println("======BANK======\n*" + " 1.추가\n* 2.조회\n* 3.입금\n* 4.출금\n* 5.삭제\n* 9.종료\n입력 >>>");
+			System.out.print( "=== 🕵️‍♂️ 탐정의 은행 사건부 ===\n"
+		            + "📁 1. 사건 파일 추가\n"
+		            + "🔎 2. 사건 조회\n"
+		            + "💼 3. 증거 입금\n"
+		            + "🕰️ 4. 증거 출금\n"
+		            + "🗃️ 5. 사건 파일 폐기\n"
+		            + "🎩 6. 추리 미니게임\n"
+		            + "📚 7. 전체 사건 열람\n"
+		            + "🚪 9. 사건 종료\n"
+		            + "🖋️ 사건 번호 입력 >>> ");
 			num = scanner.nextInt();
 			if (num == 1) {
 				// 1-1. 빈칸 확인
@@ -32,31 +39,50 @@ public class Bank_ver2 {
 					}
 				}
 				// 1-2.유저 계정에 입력 받기
-				System.out.print("아이디 입력 > ");
+				System.out.println("사건 파일 추가 중입니다.");
+				System.out.print("아이디 입력: ");
 				id[find] = scanner.next();
-				System.out.print("비밀 번호 입력 > ");
+				System.out.print("비밀 번호 입력: ");
 				pass[find] = scanner.next();
-				System.out.print("금액 > ");
+				System.out.print("금액: ");
 				balance[find] = scanner.nextDouble();
-			} else if (num == 2 || num == 3 || num == 4 || num == 5) {
+			} else if (num == 2 || num == 3 || num == 4 || num == 5 || num == 6 || num == 7) {
 				int find = -1; String tempid=""; String temppass="";
-				System.out.println("아이디 입력 > ");
+				System.out.println("아이디 입력: ");
 				tempid = scanner.next();
-				System.out.println("비밀 번호 입력 > ");
+				System.out.println("비밀 번호 입력: ");
 				temppass = scanner.next();
 				for (int i = 0; i < id.length; i++) {
-					if (tempid.equals(id[i]) && temppass.equals(pass[i])) {
+					if (tempid.equals(id[i])) {
 						find = i;
-						continue;
+						break;
 					}
-				switch(num) {
-				case 2: System.out.println("\n아이디" + id + "\n비밀번호" + pass + "\n잔액" + balance); break;
-				case 3: System.out.println("입금할 금액 > "); 
+					switch (num) {
+					case 2:
+						System.out.println("[1]아이디 > " + id[0] + "\n[2]비밀번호>" + pass[0] + "\n[3]잔액>" + balance[0]);
+						break;
+					case 3:
+						System.out.println("입금할 금액>");
+						double temp1 = scanner.nextDouble();
+						balance[0] += temp1;
+						break;
+					case 4:
+						System.out.println("출금할 금액>");
+						double temp2 = scanner.nextDouble();
+						balance[0] -= temp2;
+						break;
+					case 5:
+						System.out.println("정말로 삭제하시겠습니까?");
+						if (scanner.next().toLowerCase().equals("y")) {
+							id[0] = null;
+							pass[0] = null;
+							balance[0] = 0;
+						}
+						break;
+					}
 				}
-				}
-				if(find==-1) {System.out.println("아이디와 비밀번호를 확인해 주세요!"); continue;}
 			} else {
-				System.out.println("메뉴를 확인해 주세요");
+				System.out.println("사건 정보를 확인해 주세요.");
 			}
 		}
 	}

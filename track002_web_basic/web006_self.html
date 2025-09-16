@@ -16,18 +16,27 @@
     /* About me */
     /* Q1. About me 각 부분들 여백 주기 */
     .info{background-color: aliceblue; }
+    .portfolio{background-color: rgb(206, 232, 255); }
+    .portfolio .container{background-color: white; margin: 2em auto; padding: 2em; border-radius: 15px; box-shadow: 0 0 10px rgba(0,0,0,0.2); }
     .info h4 {margin: 5% 0;}
     /* Q2. keyword 나와 있는 ul 태그에 class="keyword" */
     .keyWord li{list-style-type: none; margin-right: 10px;}
     /* Q3. h3 밑줄*/
     .info h3{ text-decoration: underline; font-size: 2.2em;}
     .contact h3{ text-decoration: underline; font-size: 2.2em;}
+    .hidden{position: absolute; left: -9999px; 
+            width: 1px; height: 1px; overflow: hidden;
+            clip:rect(0,0,0,0);/*요소를 잘라서 시각적으로 완전히 숨김 - 구형 브라우저 호환*/
+            border: 0;
+            white-space: nowrap;/*줄바꿈 방지 -텍스트 한 줄로*/}
   </style>
 </head>
 <body>
   <!-- header -->
   <header  class="header">
+    <h1 class="hidden">강서현포트폴리오</h1>
     <nav class="navbar navbar-expand-sm navbar-dark bg-info">
+      <h2 class="hidden">주메뉴</h2>
     <div class="container-fluid">
         <a class="navbar-brand" href="javascript:void(0)">강서현</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -137,7 +146,44 @@
   </section>
 
   <!-- portfolio -->
-  <section  class="portfolio"></section>
+  <section  class="portfolio">
+    <h3 class="text-center">Portfolio</h3>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <!--<img src="./img/portfolio1.jpg" alt="">-->
+          <iframe class="w-100" src="https://www.youtube.com/embed/jvIa20UCgMs?si=BGEczKwLeQFtBsRp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <p class="text-center m-3"><a href="#" class="btn btn-primary">포트폴리오 더보기</a></p>
+        </div>
+        <div class="col-sm-4">
+          <h4>spring boot + jpa + react portfolio</h4>
+         <ul>
+                        <li><strong>Spring Boot + JPA</strong> 기반의 백엔드와 데이터 처리 로직 구현</li>
+                        <li><strong>React</strong>를 활용한 사용자 중심의 프론트엔드 UI 개발</li>
+                        <li><strong>JWT 인증</strong>과 <strong>CI/CD 자동 배포</strong>로 보안성과 효율성 강화</li>
+                    </ul>     
+        </div>
+        <div class="col-sm-4">
+          <h4> 기술 스택 </h4>
+          <ul>
+                        <li>Spring Boot 2.7.14</li>
+                        <li>Spring Security 5.7.x</li>
+                        <li>Spring Data JPA 2.7.x</li>
+                        <li>Hibernate 5.6.x</li>
+                        <li>Oracle 11</li>
+                        <li>React 18.x</li>
+                        <li>Axios 1.x</li>
+                        <li>React Router v6</li>
+                        <li>JWT</li>
+                        <li>Git & GitHub</li>
+                        <li>GitHub Actions</li>
+                    </ul>
+
+        </div>
+      </div>
+    </div>
+
+  </section>
 
   <!-- contact -->
   <section  class="contact m-5">
