@@ -45,7 +45,7 @@ public class Bank_ver3 {
 				System.out.print("비밀 번호 입력 > ");
 				String temppass = scanner.next();
 				if (!(id.equals(tempid)) && pass.equals(temppass)) {
-					System.out.println("사건 정보를 확인해 주세요!");
+					System.out.println("사건 정보를 확인해 주세요.");
 					continue;
 				}
 				// ■1. 사용자 인증
