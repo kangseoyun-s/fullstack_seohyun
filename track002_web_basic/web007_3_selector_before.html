@@ -18,9 +18,12 @@
     </script>
     <script>
       window.addEventListener("load",function(){
-      document.getElementById("addEventEx").onclick =function(){
-        let number = prompt("당신이 좋아하는 1~5 사이의 숫자")
+        let target=document.getElementById("addEventEx");
+        target.onclick =function(){
+        let number = prompt("좋아하는 1~5 사이의 숫자", "1~5");
         alert("당신이 좋아하는 숫자는" + number + "입니다.")
+        target.style.backgroundColor="#000";
+        target.style.color="#fff";
       };
     });
     </script>
