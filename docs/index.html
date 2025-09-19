@@ -212,6 +212,10 @@
     emailjs.send('seohyun', 'template_0al5es5', templateParams).then(
       (response) => {
         alert("📧 메일이 성공적으로 전송되었습니다.")
+        document.getElementById("name").value="";
+        document.getElementById("email").value="";
+        document.getElementById("title").value="";
+        document.getElementById("message").value="";
         console.log('SUCCESS!', response.status, response.text);
       },
       (error) => {
