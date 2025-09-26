@@ -7,7 +7,7 @@ public class Show {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	// 집약
 	public Show(UserInfo userinfo) {
 		super();
 		this.userinfo = userinfo;
