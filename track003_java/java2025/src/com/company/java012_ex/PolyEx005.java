@@ -32,6 +32,9 @@ class Child7 extends Parent7 {
 	void method() {
 		System.out.println("Child Method");
 	}
+	void papaMethod() {
+		super.method();
+	}
 }
 public class PolyEx005 {
 	 public static void main(String[] args) {
@@ -44,9 +47,11 @@ public class PolyEx005 {
 	      System.out.println("p.x = " + p.x);
 	      // Q5. 출력되는 내용
 	      // p.x = 100, Parent7 p가 보장하는 범위가 {int x = 100; void method()}이므로 p.x가 100을 출력
-	      p.method();
+	      p.method(); // X 인스턴스 변수 기준으로 오버라이드 된 메서드는 직접 호출하는 건 불가능
+	      ((Child7)p).papaMethod(); // 타입 캐스팅 - 부모가 자식메서드 호출 가능
+	      c.papaMethod(); // 자식에서 부모 호출 가능
 	      // Q6. 출력되는 내용
-	      // Child Method, 오버라이드 때문에 자식인 Child Method 출력
+	      // Child Method, 오버라이드 때문에 자식인 Child Method 출력 (범위에는 없더라도 오버라이드 때문에 최신 메서드인 자식 메서드가 출력)
 	      System.out.println("c.x = " + c.x);
 	      // Q7. 출력되는 내용
 	      // c.x = 200, Child7 c가 보장하는 범위가 {int x = 200; @void method()} - {int x = 100; void method()}이고,
