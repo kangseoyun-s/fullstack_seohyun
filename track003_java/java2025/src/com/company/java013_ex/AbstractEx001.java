@@ -1,4 +1,4 @@
-package com.company.java013;
+package com.company.java013_ex;
 /*
  Abstract: 일반 클래스 + 설계
                     Object
