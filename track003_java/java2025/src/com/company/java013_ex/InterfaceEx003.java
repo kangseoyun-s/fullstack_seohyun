@@ -22,6 +22,11 @@ class User {
     int money;
     int cnt;
     Launch[] plate;
+    public User() {
+    	this.money = Launch.MONEY; // 인터페이스의 상수 사용
+        this.plate = new Launch[10]; // 최대 10개 주문 가능하도록 배열 초기화
+        this.cnt = 0;
+    }
     public void order(Launch a) {
         int price =0;
         if (a instanceof Burger) {
