@@ -29,3 +29,31 @@
     git push origin dev-sh(브랜치명)
 ※ 충돌 - HEAD, ===== , >>>>>>> / 코드 수정 → git add . 부터 다시
 ```
+▶ 3. merge vs rebase
+#1. 기능 브랜치에서 작업 중 main 브랜치가 업데이트 된 경우
+> 여러 마법사가 함께 주문서를 쓰고 있을 때
+- 내가 주문을 다시 쓰면 친구들의 주문이 사라질 수도 있음
+
+⭐ 브랜치 꼭 확인!
+
+```
+#1. 불꽃 마법사가 본인 코드 작성 중
+    git add spell2.md
+    git commit -m "불꽃 마법 2 추가"
+#2. 메인 마법서가 업데이트 됨
+    불꽃 마법사가 최신 마법서 위에 자신의 주문을 다시 써야 함.
+    git checkout master
+    git pull origin master
+
+    # 최신 마법서 위에 주문 다시 쓰기
+    git checkout dev-sh
+    git rebase master  
+    # > master branch 기준으로 내 작업을 다시 정렬
+    # > 주문이 겹쳐서 마법서 충돌남 어떤 주문 쓸지 선택이 필요함 / 수정 완료
+
+    git add spell2.md
+    git rebase --continue
+
+#3. 안전하게 주문서 공유
+    git push --force-with-lease
+```
