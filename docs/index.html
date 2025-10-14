@@ -14,82 +14,103 @@
   <!-- EmailJS -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #0f0f0f;
-      color: #fff;
-      scroll-behavior: smooth;
-    }
+ <style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #0d1117;
+    color: #ffffff;
+    scroll-behavior: smooth;
+  }
 
-    .hero {
-      height: 100vh;
-      background: linear-gradient(to bottom, #1a1a1a, #0f0f0f);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
+  h1, h2, h3, h4 {
+    color: #00d1b2;
+  }
 
-    .section {
-      padding: 80px 20px;
-      max-width: 1200px;
-      margin: auto;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.6s ease-out;
-    }
+  nav.navbar {
+    background-color: #161b22 !important;
+  }
 
-    .section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .navbar-brand, .nav-link {
+    color: #ffffff !important;
+  }
 
-    h1, h2, h3, h4 {
-      color: #00d1b2;
-    }
+  .nav-link:hover {
+    color: #00d1b2 !important;
+  }
 
-    .contact form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 20px;
-    }
+  .section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: auto;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease-out;
+  }
 
-    input, textarea {
-      padding: 12px;
-      border: none;
-      border-radius: 5px;
-      background: #1e1e1e;
-      color: #fff;
-    }
+  .section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-    button {
-      padding: 12px;
-      border: none;
-      background: #00d1b2;
-      color: #000;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
+  .progress-bar {
+    background-color: #00d1b2 !important;
+  }
 
-    button:hover {
-      background: #00b89c;
-    }
+  .btn-primary {
+    background-color: #00d1b2;
+    border: none;
+  }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      background: #1a1a1a;
-    }
+  .btn-primary:hover {
+    background-color: #00b89c;
+  }
 
-    .keyWord li {
-      margin-right: 8px;
-    }
-  </style>
+  .btn-danger,
+  .btn-warning,
+  .btn-info {
+    border: none;
+    color: #fff;
+  }
+
+  .btn-danger {
+    background-color: #e63946;
+  }
+
+  .btn-warning {
+    background-color: #f4a261;
+  }
+
+  .btn-info {
+    background-color: #00b89c;
+  }
+
+  input, textarea {
+    background-color: #161b22;
+    color: #fff;
+    border: 1px solid #30363d;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: #00d1b2;
+    box-shadow: 0 0 0 2px rgba(0, 209, 178, 0.25);
+  }
+
+  footer {
+    background-color: #161b22;
+    color: #999;
+    padding: 30px 0;
+    font-size: 14px;
+  }
+
+  .carousel-inner img {
+    filter: brightness(80%);
+  }
+</style>
+
 </head>
 <body>
 
