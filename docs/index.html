@@ -11,30 +11,95 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <style>
-    /* VISUAL */
-    div#demo {       height: 300px;    overflow: hidden; }
-    /* About me */
-    /* Q1. About me 각 부분들 여백 주기 */
-    .info{background-color: aliceblue; }
-    .portfolio{background-color: rgb(228, 243, 255); }
-    .portfolio .container{background-color: white; margin: 2em auto; padding: 2em; border-radius: 15px; box-shadow: 0 0 10px rgba(0,0,0,0.2); }
-    .info h4 {margin: 5% 0;}
-    /* Q2. keyword 나와 있는 ul 태그에 class="keyword" */
-    .keyWord li{list-style-type: none; margin-right: 10px;}
-    /* Q3. h3 밑줄*/
-    .info h3{ font-size: 2.2em;}
-    .portfolio h3{ font-size: 2.2em;}
-    .contact h3{font-size: 2.2em;}
-    .hidden{position: absolute; left: -9999px; 
-            width: 1px; height: 1px; overflow: hidden;
-            clip:rect(0,0,0,0);/*요소를 잘라서 시각적으로 완전히 숨김 - 구형 브라우저 호환*/
-            border: 0;
-            white-space: nowrap;/*줄바꿈 방지 -텍스트 한 줄로*/}
+   body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0f0f0f;
+  color: #fff;
+  scroll-behavior: smooth;
+}
+
+.hero {
+  height: 100vh;
+  background: linear-gradient(to bottom, #1a1a1a, #0f0f0f);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.section {
+  padding: 80px 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+h1, h2 {
+  color: #00d1b2;
+}
+
+.contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+input, textarea {
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background: #1e1e1e;
+  color: #fff;
+}
+
+button {
+  padding: 12px;
+  border: none;
+  background: #00d1b2;
+  color: #000;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #00b89c;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  background: #1a1a1a;
+}
+.section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.6s ease-out;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+window.addEventListener('scroll', () => {
+  const sections = document.querySelectorAll('.section');
+  const trigger = window.innerHeight * 0.8;
+
+  sections.forEach(section => {
+    const top = section.getBoundingClientRect().top;
+    if (top < trigger) {
+      section.classList.add('visible');
+    }
+  });
+});
+
   </style>
 </head>
 <body>
   <!-- header -->
-  <header  class="header">
+  <section class="section" id="services">
     <h1 class="hidden">강서현포트폴리오</h1>
     <nav class="navbar navbar-expand-sm navbar-dark bg-info">
       <h2 class="hidden">주메뉴</h2>
@@ -61,7 +126,7 @@
         </div>
     </div>
     </nav>
-  </header>
+  </section>
 
   <!-- visual -->
   <section  class="visual">
