@@ -94,7 +94,10 @@ window.addEventListener('scroll', () => {
     }
   });
 });
-
+ window.addEventListener('DOMContentLoaded', () => {
+      const firstSection = document.querySelector('.section');
+      if (firstSection) firstSection.classList.add('visible');
+    });
   </style>
 </head>
 <body>
@@ -162,7 +165,7 @@ window.addEventListener('scroll', () => {
   </section>
 
   <!-- info -->
-  <section  class="info p-5">
+  <section class="section" id="about">
     <div class="container">
         <h3 class="p-5 text-center">About Me</h3>
         <div class="row">
