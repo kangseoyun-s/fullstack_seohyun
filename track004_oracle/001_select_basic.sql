@@ -119,9 +119,18 @@ commit;  -- 삽입[반영]
 -- https://sally03915.github.io/stackventure_250825/004_oracle/oracle002_select_basic#45
 
 -- Ex1
-
+select distinct job from emp;
 -- Ex2
-
+select empno as EMPLOYEE_NO, 
+       ENAME as EMPLOYEE_NAME,
+       job,
+       MGR as MANAGER,
+       hiredate,
+       SAL as SALARY,
+       COMM as COMMISSION,
+       DEPTNO as DEPARTMENT_NO
+       from emp order by deptno desc, ename;
+       
 
 
 

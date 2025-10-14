@@ -49,24 +49,73 @@ select * from emp  where comm is not null;
 -- https://sally03915.github.io/stackventure_250825/004_oracle/oracle003_select_where#11
 
 
+select * from emp  where  deptno =30;
 
+select * from emp  where  deptno =30 and job = 'salesman';
 
+select * from emp  where  deptno =30 or job = 'clerk';
 
+select * from emp  where  sal*12 = 36000;
 
+-- sql 처리 순서
+-- select
+-- from emp   1. emp 테이블 읽어오기
+-- where sal*12=36000 2. 각 행에 대해(한 명 자료 묶음) sal*12=36000
 
+select * from emp  where  sal>=3000;
 
+select * from emp  where ename >= 'F';
 
+select * from emp  where ename <= 'FORZ';
 
+select * from emp  where sal !=3000;
 
+select * from emp where sal <>3000;
 
+select * from emp where sal ^=3000;
 
+select * from emp where not sal =3000;
 
+select * from emp where job ='MANAGER' or job= 'SALESMAN' or job='CLERK';
 
+select * from emp where job in('MANAGER','SALESMAN','CLERK');
 
+select * from emp where job !='MANAGER' and job <>'SALESMAN' and job ^='CLERK';
 
+select * from emp where job not in('MANAGER','SALESMAN','CLERK');
 
+select * from emp where sal >= 2000 and sal <=3000;
 
+select * from emp where sal between 2000 and 3000;
 
+select * from emp where sal not between 2000 and 3000;
+
+select * from emp  where ename like 'S%';
+
+select * from emp  where ename like '_L%';
+
+select * from emp  where ename like '%AN%';
+
+select * from emp  where ename not like '%AN%';
+
+SELECT ENAME, SAL, SAL*12+COMM AS ANNSAL, COMM FROM EMP;
+SELECT ENAME, SAL, SAL*12+COMM ANNSAL, COMM FROM EMP;
+
+select * from emp  where comm =  null;
+
+select * from emp  where comm is null;
+
+select * from emp  where comm is not null;
+
+select * from emp  where mgr is not null;
+
+select * from emp  where sal > null and comm is null;
+--                        X(false)  and   true
+-- 작동 안 되는 코드
+
+select * from emp  where sal > null or comm is null;
+--                       X(false)   or   true
+-- 작동되는 코드
 
 
 
