@@ -120,3 +120,5 @@ avg(sal)
 from emp
 group by deptno, job
 order by deptno, job;
+
+

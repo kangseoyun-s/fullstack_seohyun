@@ -57,3 +57,33 @@
 #3. 안전하게 주문서 공유
     git push --force-with-lease
 ```
+git revert
+ㄴ 안전한 취소 - 모두가 함께 쓰는 깃허브 [공용]
+git reset
+ㄴ 아예 지우기 - [본인] 브랜치에서만
+
+실습 (1) revert
+
+1. 본인 브랜치에서 파일 작성 - 테스트 브랜치에서 새 작업하고 원격 저장소 푸시
+``` bash
+git branch
+git checkout dev-sh
+파일 작성 revert.md
+git add .
+git commit -m "revert"
+git push origin dev-sh
+```
+2. main 브랜치에서 병합 - 테스트 브랜치 작업 master 병힙하고 푸시
+``` bash
+git checkout master
+git pull origin master
+git merge dev-sh
+git push origin master
+```
+3. main 브랜치에서 되돌리기
+``` bash
+git checkout master
+git log
+git revert <<>>
+git push origin master
+```
