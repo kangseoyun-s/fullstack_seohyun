@@ -153,7 +153,7 @@ order by deptno, sal;
 
 
 --ex001
-select deptno, round(avg(sal),0) avg_sal,
+select deptno, trunc(avg(sal)) as avg_sal,
 max(sal) max_sal,
 min(sal) min_sal,
 count(*) cnt
@@ -172,8 +172,21 @@ to_char(hiredate, 'yyyy') as hire_year,
 deptno,
 count(*) cnt
 from emp
-group by to_char(hiredate, 'yyyy'), deptno;
+group by deptno, to_char(hiredate, 'yyyy');
 
 -- ex004
-select
-comm()
+select 
+decode(comm, null, 'X', 'O') as exist_comm,
+count(*) as cnt
+from emp
+group by decode(comm, null, 'X', 'O');
+
+-- ex005
+select deptno,
+to_char(hiredate, 'yyyy') as hire_year,
+count(to_char(hiredate, 'yyyy')) as cnt,
+max(sal) as max_sal,
+sum(sal) as sum_sal,
+avg(sal) as avg_sal
+from emp
+group by rollup (deptno, to_char(hiredate, 'yyyy'));
