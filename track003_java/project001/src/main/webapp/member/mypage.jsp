@@ -41,7 +41,7 @@
 			// 2. 커넥션
 			conn = DriverManager.getConnection(url, user, pass);
 			// 3. prepareStatement
-			String sql = "select * from APP_USER where APP_USER_ID=?";
+			String sql = "select * from appuser where APP_USER_ID=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, APP_USER_ID);
 			// 4. resultset

@@ -22,7 +22,7 @@ try {
 	// 2. 커넥션
 	conn = DriverManager.getConnection(url, user, pass);
 	// 3. PreparedStatment
-	String sql = "insert into APP_USER (APP_USER_ID, EMAIL, PASSWORD, MBTI_TYPE_ID,CREATED_AT) values (appuser_seq.nextval,?,?,?,SYSDATE)";
+	String sql = "insert into appuser (APP_USER_ID, EMAIL, PASSWORD, MBTI_TYPE_ID,CREATED_AT) values (appuser_seq.nextval,?,?,?,SYSDATE)";
 	pstmt = conn.prepareStatement(sql);
 	pstmt.setString(1, email);
 	pstmt.setString(2, password);

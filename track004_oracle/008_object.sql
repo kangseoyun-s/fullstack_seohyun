@@ -37,22 +37,21 @@ select * from dept_temp;
 
 -- Q appuser 테이블에서 시퀀스 만들기;
 desc APP_USER;
-create sequence APP_USER_seq;
+create sequence appuser_seq;
 
-alter table APP_USER modify email varchar2(100) not null unique; -- 유일한 값
+alter table appuser modify email varchar2(100) not null unique; -- 유일한 값
 drop table appuser;
-CREATE TABLE APP_USER (
-    APP_USER_ID   NUMBER        NOT NULL,
-    EMAIL         VARCHAR2(100) NOT NULL,
+
+CREATE TABLE appuser (
+    APP_USER_ID   NUMBER        NOT NULL primary key,
+    EMAIL         VARCHAR2(100) NOT NULL unique,
     PASSWORD      VARCHAR2(255) NOT NULL,
     MBTI_TYPE_ID  NUMBER,
     CREATED_AT    DATE
 );
 SELECT table_name FROM user_tables;
 
-ALTER TABLE APP_USER MODIFY email VARCHAR2(100) NOT NULL;
 
-ALTER TABLE APP_USER ADD CONSTRAINT email_unique UNIQUE (email);
 
 SELECT table_name, constraint_name, column_name
 FROM user_cons_columns
@@ -62,4 +61,8 @@ WHERE constraint_name IN (
   WHERE constraint_type = 'U'
 );
 
+select * from  appuser;
+
 select column_name from user_id_columns where table_name='APP_USER' and column_name='EMAIL';
+
+commit;

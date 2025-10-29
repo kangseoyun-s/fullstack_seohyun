@@ -19,7 +19,7 @@
 	// 2. 커넥션
 	try {
 		conn = DriverManager.getConnection(url, user, pass);
-		String sql = "select count(*) cnt, APP_USER_ID from APP_USER where email=? and password=? group by APP_USER_ID";
+		String sql = "select count(*) cnt, APP_USER_ID from appuser where email=? and password=? group by APP_USER_ID";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, email);
 		pstmt.setString(2, password);
