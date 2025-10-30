@@ -35,3 +35,14 @@ update post set title='new-title', content='new-content' where id=1 and pass='11
 
 -- delete from post where id=? and pass=?
 delete from post where id=5 and pass='1111'
+
+ALTER TABLE POST MODIFY TITLE NULL;
+
+desc post;
+
+
+ALTER TABLE post MODIFY title VARCHAR2(200);
+
+
+
+

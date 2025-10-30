@@ -4,19 +4,20 @@ import java.time.LocalDateTime;
 
 public class PostDto {
 	private int id;
-	private int appUserId;
+	private int AppUserId;
 	private String title;
 	private String content;
 	private String pass;
 	private LocalDateTime createdAt; 
 	private int hit;
 	private String email;
+	// 생성자 / toString / get+set
 	
-	public PostDto(int id, int appUserId, String title, String content, String pass, LocalDateTime createdAt, int hit,
+	public PostDto(int id, int AppUserId, String title, String content, String pass, LocalDateTime createdAt, int hit,
 			String email) {
 		super();
 		this.id = id;
-		this.appUserId = appUserId;
+		this.AppUserId = AppUserId;
 		this.title = title;
 		this.content = content;
 		this.pass = pass;
@@ -31,7 +32,7 @@ public class PostDto {
 	public PostDto(int id, int appUserId, String title, String content, String pass, LocalDateTime createdAt, int hit) {
 		super();
 		this.id = id;
-		this.appUserId = appUserId;
+		this.AppUserId = appUserId;
 		this.title = title;
 		this.content = content;
 		this.pass = pass;
@@ -45,10 +46,10 @@ public class PostDto {
 		this.id = id;
 	}
 	public int getAppUserId() {
-		return appUserId;
+		return AppUserId;
 	}
-	public void setAppUserId(int appUserId) {
-		this.appUserId = appUserId;
+	public void setAppUserId(int AppUserId) {
+		this.AppUserId = AppUserId;
 	}
 	public String getTitle() {
 		return title;
@@ -80,9 +81,16 @@ public class PostDto {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	@Override
 	public String toString() {
-		return "PostDto [id=" + id + ", appUserId=" + appUserId + ", title=" + title + ", content=" + content
+		return "PostDto [id=" + id + ", appUserId=" + AppUserId + ", title=" + title + ", content=" + content
 				+ ", pass=" + pass + ", createdAt=" + createdAt + ", hit=" + hit + "]";
 	}
 	
