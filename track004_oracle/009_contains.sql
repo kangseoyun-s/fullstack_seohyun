@@ -46,3 +46,38 @@ delete from dept_fk where deptno=30; -- 부모 삭제
 select * from emp_fk;  -- 자식 자동 삭제
 
 -- Q1. jsp + oracle 외래키
+-- 1. 구조 파악
+desc appuser;
+이름           널?       유형            
+------------ -------- ------------- 
+APP_USER_ID  NOT NULL NUMBER        
+EMAIL        NOT NULL VARCHAR2(100) 
+PASSWORD     NOT NULL VARCHAR2(255) 
+MBTI_TYPE_ID          NUMBER        
+CREATED_AT            DATE    
+
+desc post;
+이름          널?       유형            
+----------- -------- ------------- 
+ID          NOT NULL NUMBER        
+APP_USER_ID NOT NULL NUMBER        
+TITLE                VARCHAR2(200) 
+CONTENT     NOT NULL CLOB          
+PASS        NOT NULL VARCHAR2(100) 
+CREATED_AT           DATE          
+HIT                  NUMBER
+
+-- 2. 부모와 자식 테이블 관계
+-- 유저는 많은 글을 가질 수 있다.
+
+alter table post add constraint fk_post_appuser foreign key(app_user_id) references appuser(app_user_id);
+
+select app_user_id from post where app_user_id not in(select app_user_id from appuser);
+
+select constraint_name, table_name, column_name
+from user_cons_columns
+where table_name='POST';
+
+delete from appuser;
+delete from post;
+commit;
