@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <title>Bootstrap 5 Website Example</title>
   <meta charset="utf-8">
@@ -40,7 +40,10 @@
     </ul>
   </div>
 </nav>
-<!-- header -->
+
+<!-- Header --><!-- Header --><!-- Header --><!-- Header --><!-- Header --><!-- Header --><!-- Header --><!-- Header -->
+<!-- Header --><!-- Header --><!-- Header --><!-- Header --><!-- Header --><!-- Header --><!-- Header --><!-- Header -->
+<!-- Header --><!-- Header --><!-- Header --><!-- Header --><!-- Header --><!-- Header --><!-- Header --><!-- Header -->
 
 <div class="container mt-5">
   <div class="row">
@@ -82,6 +85,10 @@
     </div>
   </div>
 </div>
+
+<!-- Footer --><!-- Footer --><!-- Footer --><!-- Footer --><!-- Footer --><!-- Footer --><!-- Footer --><!-- Footer -->
+<!-- Footer --><!-- Footer --><!-- Footer --><!-- Footer --><!-- Footer --><!-- Footer --><!-- Footer --><!-- Footer -->
+<!-- Footer --><!-- Footer --><!-- Footer --><!-- Footer --><!-- Footer --><!-- Footer --><!-- Footer --><!-- Footer -->
 
 <div class="mt-5 p-4 bg-dark text-white text-center">
   <p>Footer</p>

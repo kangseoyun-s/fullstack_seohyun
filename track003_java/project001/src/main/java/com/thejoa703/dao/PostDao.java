@@ -50,7 +50,8 @@ public class PostDao {
     public ArrayList<PostDto> selectAll() {
         ArrayList<PostDto> result = new ArrayList<>();
         String sql = "SELECT p.*, u.email email "
-                   + "FROM post p JOIN appuser u ON p.app_user_id = u.app_user_id";
+                   + "FROM post p JOIN appuser u ON p.app_user_id = u.app_user_id "
+        		   + " order by id desc";
 
         try (
             Connection conn = getConnection();

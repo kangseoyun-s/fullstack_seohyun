@@ -1,10 +1,7 @@
 <%@page import="com.thejoa703.dto.PostDto"%>
 <%@page import="com.thejoa703.dao.PostDao"%>
-<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-  
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,51 +16,42 @@
 <body>
    <div class="container card  my-5">
       <h3  class="card-header"> DAO TEST </h3>
-      <%--<pre class="alert alert-success">
-      1.insert
-      </pre>
-        <% 
-      PostDao dao = new PostDao();
-      PostDto dto = new PostDto();
-      dto.setAppUserId(1);
-      dto.setTitle("첫 번째 글쓰기");
-      dto.setContent("내용");
-      dto.setPass("1111");
-      out.println(dao.insert(dto));
-      %>--%>
-      <pre class="alert alert-success">
-<%--       2. selectAll
-      </pre>
-      <%PostDao dao = new PostDao();
-      out.println(dao.selectAll());
-      %> --%>
-     <%--  <pre class="alert alert-success">
-      3. select
-      </pre>
-      <%PostDao dao = new PostDao();
-      out.println(dao.update_hit(1));
-      out.println(dao.select(1));
-      %>
-       --%>
-     <%-- 4. update
-      <%
-     PostDao dao = new PostDao();
-     PostDto dto = new PostDto();
-     out.println(dao.update(dto));
-     %>
-      --%>
-      
-    5. delete
+	     <pre class="alert alert-success">
+	     1. insert
+	     
+	     	insert into post ( id , app_user_id ,title , content , pass
+					  values ( post_seq.nextval , ? , ? , ? , ? )
+	     </pre>
+ <!-- 
+	     PostDao dao = new PostDao();
+	     PostDto dto = new PostDto();
+	     dto.setAppUserId(1);
+	     dto.setTitle("첫번째 글쓰기입니다.");
+	     dto.setContent("내용");
+	     dto.setPass("1111");
+	     out.println(dao.insert(dto));      //1나오면 글쓰기 성공! -->
+
+     <pre class="alert alert-success">
+     2. select all
+     </pre>
+<%--      <%
+	     PostDao dao = new PostDao();
+     	out.println(dao.selectAll());
+     %> --%>
+     
+     3. select
      <%
      PostDao dao = new PostDao();
-     PostDto dto = new PostDto();
-
-     dto.setPass("1");
-     dto.setId(1); 
+     out.println(dao.update_hit(8));  
+     out.println(dao.select(8));
+     %>
      
-     out.println(dao.delete(dto));
-     %> 
+     4. update
+     
+     5. delete
+     
+     
+     
    </div>
-   
 </body>
 </html>

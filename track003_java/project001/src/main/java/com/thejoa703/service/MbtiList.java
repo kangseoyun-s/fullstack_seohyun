@@ -12,11 +12,13 @@ public class MbtiList implements MbtiService {
 	@Override
 	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		// 데이터 넘겨받기 X
-		// 드커프리(PostDao)
+		//1. 데이터 넘겨받기 X
+		//2. 드커프리(PostDao)
 		PostDao dao = new PostDao();
-		// 데이터 넘겨주기
+		//3. 데이터 넘겨주기
 		request.setAttribute("list", dao.selectAll());
+		
+
 	}
 
 }

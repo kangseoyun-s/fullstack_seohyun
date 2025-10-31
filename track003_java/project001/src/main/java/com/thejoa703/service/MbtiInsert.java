@@ -11,37 +11,26 @@ import com.thejoa703.dao.PostDao;
 import com.thejoa703.dto.PostDto;
 
 public class MbtiInsert implements MbtiService {
-    @Override
-    public void exec(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
+	@Override
+	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//1. 데이터 넘겨받기 X
+		//int app_user = Integer.parseInt(request.getParameter("APP_USER_ID"));
+		HttpSession session = request.getSession();
+		int app_user = (Integer)session.getAttribute("APP_USER_ID");
+		
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		String pass = request.getParameter("pass");
+		//2. 드커프리(PostDao)
+		PostDao dao = new PostDao();
+		PostDto dto = new PostDto();
+		
+		dto.setAppUserId(app_user); 
+		dto.setTitle(title); dto.setContent(content); dto.setPass(pass); 
+		String result = String.valueOf(dao.insert(dto)); 
+		//3. 데이터 넘겨주기
+		request.setAttribute("result", result);
+		
+	}
 
-        // ✅ 세션에서 로그인한 사용자 ID 가져오기
-        HttpSession session = request.getSession();
-        int app_user_id = (Integer)session.getAttribute("APP_USER_ID");
-
-        // ✅ 폼 데이터 받기
-        String title   = request.getParameter("title");
-        String content = request.getParameter("content");
-        String pass    = request.getParameter("pass");
-
-        System.out.println("app_user_id = " + app_user_id);
-        System.out.println("title = " + title);
-        System.out.println("content = " + content);
-        System.out.println("pass = " + pass);
-
-        // ✅ DTO에 값 채우기
-        PostDto dto = new PostDto();
-        dto.setAppUserId(app_user_id);   // <-- 여기 핵심 수정
-        dto.setTitle(title);
-        dto.setContent(content);
-        dto.setPass(pass);
-
-        // ✅ DB insert
-        PostDao dao = new PostDao();
-        String result = String.valueOf(dao.insert(dto));
-
-        // ✅ 결과 저장
-        request.setAttribute("result", result);
-    }
 }

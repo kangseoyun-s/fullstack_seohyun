@@ -16,112 +16,80 @@ import com.thejoa703.service.MbtiService;
 import com.thejoa703.service.MbtiUpdate;
 import com.thejoa703.service.MbtiUpdateView;
 
-/**
- * Servlet implementation class MbtiController
- */
-// @WebServlet("*.do")
+
+//@WebServlet("*.do")
 public class MbtiController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public MbtiController() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    public MbtiController() { super();  }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doAction(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doAction(request, response);
 	}
-
-	protected void doAction(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	
+	protected void doAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		String path = request.getServletPath(); // /a.do
-	
+		String path = request.getServletPath();
 		System.out.println(path);
 		
 		MbtiService service = null;
 		
-		if (path.equals("/list.do")) {
-			// ■ MbtiList - 데이터 받고 처리
-			service = new MbtiList();
-			service.exec(request, response);
+		if(path.equals("/list.do")) {	
+			service = new MbtiList(); service.exec(request, response);
 			request.getRequestDispatcher("mbtiBoard/list.jsp").forward(request, response);
-		}
-		else if(path.equals("/writeView.do")) {
-		//	□    /  mbtiBoard/write.jsp
+			
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////			
+		} else if(path.equals("/writeView.do")) {			
 			request.getRequestDispatcher("mbtiBoard/write.jsp").forward(request, response);
-		}
-		else if(path.equals("/write.do")) {
-		//■  MbtiInsert        / 알림창 +  list.do
-//			out.println("<script>alert(글쓰기에 성공했습니다!)</script>");
-//			response.sendRedirect("list.do");
-			service = new MbtiInsert();
-			service.exec(request, response);
-			
+		} else if(path.equals("/write.do")) {	
+			service = new MbtiInsert(); service.exec(request, response);
 			String result = (String)request.getAttribute("result");
+	        if(result.equals("1")) {
+	        out.println("<script>alert('글쓰기에 성공했습니다.'); location.href='list.do';</script>");
+	        }else {
+	        out.println("<script>alert('관리자에게 문의 바랍니다.'); location.href='list.do';</script>");
+	        }
 			
-			if(result.equals("1")) {
-			out.println("<script>alert('글쓰기에 성공했습니다.'); location.href='list.do';</script>");
-			}
-			else {out.println("<script>alert('관리자에게 문의 바랍니다.'); location.href='list.do';</script>");}
-		}
-		else if(path.equals("/detail.do")) {
-		// ■  MbtiDetail       /          mbtiBoard/detail.jsp
-			service = new MbtiDetail();
-			service.exec(request, response);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////			
+		} else if(path.equals("/detail.do")) {
+			service = new MbtiDetail(); service.exec(request, response);
 			request.getRequestDispatcher("mbtiBoard/detail.jsp").forward(request, response);
-		}
-		else if(path.equals("/editView.do")) {
-		//■  MbtiUpdateView   /          mbtiBoard/edit.jsp  
-			service = new MbtiUpdateView();
-			service.exec(request, response);
+			
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////			
+		} else if(path.equals("/editView.do")) {
+			service = new MbtiUpdateView(); service.exec(request, response);
 			request.getRequestDispatcher("mbtiBoard/edit.jsp").forward(request, response);
-		}
-		else if(path.equals("/edit.do")) {
-		// ■  MbtiUpdate      /  알림창 +  mbtiBoard/detail.jsp
-			service = new MbtiUpdate();
-			service.exec(request, response);
-			out.println("<script>alert('글 수정에 성공했습니다.'); location.href='detail.do';</script>");
-		}
-		else if(path.equals("/deleteView.do")) {
-		// □                    /         mbtiBoard/delete.jsp   	
-			request.getRequestDispatcher("mbtiBoard/delete.jsp").forward(request, response);
-		}
-		else if(path.equals("/delete.do")) {
-	    // ■  MbtiDelete      /  알림창 +  list.do
-			service = new MbtiDelete();
-			service.exec(request, response);
-			out.println("<script>alert('글 삭제에 성공했습니다.'); location.href='list.do';</script>");
+		} else if(path.equals("/edit.do")) {
+			service = new MbtiUpdate(); service.exec(request, response);
+			int id = Integer.parseInt(request.getParameter("id"));
+			System.out.println(id);
+			String result = (String)request.getAttribute("result");
+			if(result.equals("1")) {
+			out.print("<script>alert('글수정 성공.'); location.href='list.do?id="+request.getParameter("id")+"';</script>");
+			}
+			else {out.print("<script>alert('비밀번호 확인.') history.go(-1); </script>");}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////			
+		} else if(path.equals("/deleteView.do")) {		
+			request.getRequestDispatcher("mbtiBoard/delete.jsp").forward(request, response);		
+		} else if(path.equals("/delete.do")) {
+			service = new MbtiDelete(); service.exec(request, response);
+			String result = (String)request.getAttribute("result");
+			if(result.equals("1")) {
+				out.print("<script>alert('글삭제 성공.'); location.href='list.do';</script>");
+			}
+			else {
+				out.print("<script>alert('비밀번호 확인.') history.go(-1); </script>");
+			}
 		}
 	}
 
-}
 
-//ㄴ index.jsp
-//ㄴ [전체글보기] /list.do        ■  MbtiList          /          mbtiBoard/list.jsp
-//ㄴ [글쓰기폼  ] /writeView.do   □                    /         mbtiBoard/write.jsp
-//ㄴ [글쓰기기능]  /write.do      ■  MbtiInsert        / 알림창 +  list.do
-//ㄴ [상세보기 ]   /detail.do     ■  MbtiDetail       /          mbtiBoard/detail.jsp 
-//ㄴ [글수정폼  ]  /editView.do   ■  MbtiUpdateView   /          mbtiBoard/edit.jsp  
-//ㄴ [글수정기능]   /edit.do        ■  MbtiUpdate      /  알림창 +  mbtiBoard/detail.jsp 
-//ㄴ [글삭제폼  ]  /deleteView.do □                    /         mbtiBoard/delete.jsp   
-//ㄴ [글삭제기능]   /delete.do      ■  MbtiDelete      /  알림창 +  list.do
+}

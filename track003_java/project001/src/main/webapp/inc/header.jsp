@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib  prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,10 +14,6 @@
     height: 200px;
     background: #aaa;
   }
-  .a {
-   text-align: center; 
-   width: 100%;
-  }
   </style>
 </head>
 <body>
@@ -27,28 +23,43 @@
   <p>Resize this responsive page to see the effect!</p> 
 </div>
 
-	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-		<div class="container-fluid">
-			<ul class="navbar-nav">
-				<!-- 로그인을 한 경우 -->
-				<% String email = (String)session.getAttribute("email"); // session 서버에 저장 브라우저 닫힐 때까지 사용 가능 / request 1번만 사용
-    Integer sid = (Integer)session.getAttribute("APP_USER_ID");
-    if(email != null){ %>
-				<li class="nav-item"><a class="nav-link active"
-					href="<%=request.getContextPath()%>/member/mypage.jsp?APP_USER_ID=<%=sid%>"><%=email%></a>
-				</li>
-				<li class="nav-item"><a class="nav-link"
-					href="<%=request.getContextPath()%>/list.do">MbtiBoard</a></li>
-					<li class="nav-item"><a class="nav-link"
-					href="<%=request.getContextPath()%>/member/logout.jsp">LOGOUT</a></li>
-				<%  } else{ %>
-				<!-- 로그인을 안 한 경우 -->
-				<li class="nav-item"><a class="nav-link active"
-					href="<%=request.getContextPath()%>/member/login.jsp">LOGIN</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="<%=request.getContextPath()%>/member/join.jsp">JOIN</a></li>
-				<% } %>
-			</ul>
-		</div>
-	</nav>
-	<!-- header -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div class="container-fluid">
+    <ul class="navbar-nav">
+      <!-- 	  로그인을 한경우		 -->
+	 <%  
+	 	String email = (String)session.getAttribute("email");  // session - 서버에 저장, 브라우저닫힐때까지 사용  / request 1번만 사용
+	 	Integer sid = (Integer)session.getAttribute("APP_USER_ID"); 
+	 	
+	 	 if(email != null){    %>   
+	      <li class="nav-item">
+	        <a class="nav-link active" 
+	           href="<%=request.getContextPath()%>/member/mypage.jsp?APP_USER_ID=<%=sid%>">
+	            <%=email%>
+	        </a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="<%=request.getContextPath()%>/list.do">MbtiBoard</a>
+	      </li> 
+	      <li class="nav-item">
+	        <a class="nav-link" href="<%=request.getContextPath()%>/member/logout.jsp">로그아웃</a>
+	      </li> 
+    <%   }else{  %>
+      		<!-- 	  로그인을 (안) 한경우		 -->
+	      <li class="nav-item">
+	        <a class="nav-link" href="<%=request.getContextPath()%>/member/login.jsp">LOGIN</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="<%=request.getContextPath()%>/member/join.jsp">JOIN</a>
+	      </li>    
+	       <li class="nav-item">
+	        <a class="nav-link" href="<%=request.getContextPath()%>/list.do">MbtiBoard</a>
+	      </li>
+     <%  } %> 
+    </ul> 
+  </div>
+</nav>
+<!-- 	header		 -->
+<!-- 	header		 -->
+<!-- 	header		 -->
+    
