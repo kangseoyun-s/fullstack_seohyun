@@ -10,7 +10,10 @@ public interface UserService {
 	public int delete(UserDto dto);
 	public List<UserDto> selectAll();
 	public UserDto select(int appUserId);
-	public int selectlogin(UserDto dto);
+	public int selectLogin(UserDto dto);
 	public UserDto selectEmail(String email);
+	public int iddouble(String email);
+	public int updateAdmin(UserDto dto);
+	public int deleteAdmin(UserDto dto);
 
 }

@@ -31,7 +31,7 @@ public class Test1_Board {
 	@Ignore @Test public void test2() {System.out.println(ds);}
 	@Ignore @Test public void test3() {System.out.println(session);}
 	
-	@Test public void test4() {
+	@Ignore @Test public void test4() {
 		
 		UserDto dto = new UserDto();
 		dto.setPassword("1"); dto.setAppUserId(44);
@@ -46,4 +46,21 @@ public class Test1_Board {
 //		System.out.println("2. " + dao.insert(dto));
 //		System.out.println("1. " + dao.selectAll());
 	}
+	@Ignore @Test public void test6() {
+		System.out.println(dao.iddouble("1@1"));
+		System.out.println(dao.iddouble("9@9"));
+	}
+	@Ignore @Test public void test7() {
+		UserDto dto = new UserDto();
+		dto.setMbtiTypeId(2); dto.setAppUserId(68);
+		System.out.println(dao.updateAdmin(dto));
+		System.out.println(dao.selectAll());
+		
+	}
+	@Test public void test8() {
+		UserDto dto = new UserDto();
+		dto.setAppUserId(68);
+		System.out.println(dao.deleteAdmin(dto));
+		System.out.println(dao.selectAll());
+}
 }

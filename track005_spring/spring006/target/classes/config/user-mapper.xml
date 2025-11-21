@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.thejoa703.dao.UserDao">
     
-    <resultMap id="sborad1Map"  type="UserDto">
+    <resultMap id="appuserMap"  type="UserDto">
     <result property="id" column="ID"/>
     <result property="appUserId" column="APP_USER_ID"/>
     <result property="password" column="PASSWORD"/>
@@ -25,16 +25,27 @@
 	<delete id="delete" parameterType="UserDto">
 		delete from appuser where APP_USER_ID=#{appUserId} and PASSWORD=#{password}
 	</delete>
-	<select resultMap="sborad1Map" id="selectAll">
+	<select resultMap="appuserMap" id="selectAll">
 		select * from appuser order by APP_USER_ID desc
 	</select>
-	<select resultMap="sborad1Map" id="select" parameterType="UserDto">
+	<select resultMap="appuserMap" id="select" parameterType="UserDto">
 		select * from appuser where APP_USER_ID=#{appUserId}
 	</select>
-	<select resultMap="sborad1Map" id="selectEmail" parameterType="UserDto">
+	<select resultMap="appuserMap" id="selectEmail" parameterType="UserDto">
 		select * from appuser where EMAIL=#{email}
 	</select>
 	<select resultType="int" id="selectLogin" parameterType="UserDto">
-		select count(*) cnt from appuser where email=#{email}, PASSWORD=#{password}
+		select count(*) cnt from appuser where email=#{email} and PASSWORD=#{password}
 	</select>
+	<select resultType="int" id="iddouble" parameterType="String">
+		select count(*) cnt from appuser where email=#{email}
+	</select>
+	<delete id="deleteAdmin" parameterType="UserDto">
+		delete from appuser where APP_USER_ID=#{appUserId}
+	</delete>
+	<update id="updateAdmin" parameterType="UserDto">
+		update appuser
+		set MBTI_TYPE_ID=#{mbtiTypeId}
+		where APP_USER_ID=#{appUserId}
+	</update>
 </mapper>

@@ -43,6 +43,8 @@ desc post;
 
 ALTER TABLE post MODIFY title VARCHAR2(200);
 
+select * from appuser where email='1@1';
 
-
+-- delete from appuser where app_user_id=? 
+delete from appuser where app_user_id;
 

@@ -9,5 +9,5 @@ public class UserDto {
 	private String email;
 	private String password;
 	private int mbtiTypeId;
-	private LocalDateTime createdAt; 
+	private LocalDateTime createdAt;
 }

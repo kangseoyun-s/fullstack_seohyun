@@ -1,10 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<%@  include file="../inc/header.jsp" %>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@  include file="../inc/header.jsp" %>
+<script>
+$(function(){
+	let result='${success}';
+	console.log(result);
+	if(result == "회원 가입 실패") {alert(result); history.go(-1);}
+	else if(result =='비밀 번호를 확인해 주세요.'){alert(result); history.go(-1);}
+	else if(result.lenght !=0){alert(result);}
+});
+</script>   
 <div class="container mt-5">
 	<h3> 로그인</h3>
-	<form action=""  method="post">
+	<form action="${pageContext.request.contextPath}/login.users"  method="post">
 	  <div class="mb-3 mt-3">
 	    <label for="email" class="form-label">Email:</label>
 	    <input type="email" class="form-control" id="email" placeholder="이메일을 적어주세요"  required name="email">

@@ -1,0 +1,100 @@
+외래키 O
+-- 메뉴
+CREATE TABLE MENU (
+    menu_id      NUMBER PRIMARY KEY,
+    menu_name    VARCHAR2(100) NOT NULL,
+    description  VARCHAR2(500)
+);
+
+-- 재료 (고유 이름)
+CREATE TABLE INGREDIENT (
+    ingredient_id    NUMBER PRIMARY KEY,
+    ingredient_name  VARCHAR2(100) NOT NULL,
+    ingredient_type  VARCHAR2(50)  -- 야채, 육류, 곡류, 양념 등 (옵션)
+);
+
+-- 단위 (g, ml, 개, 큰술, 작은술 ...)
+CREATE TABLE UNIT (
+    unit_id     NUMBER PRIMARY KEY,
+    unit_name   VARCHAR2(30) NOT NULL,   -- 'g', 'ml', '개', '큰술' 등
+    unit_type   VARCHAR2(20)            -- 'weight', 'volume', 'count' 등 (옵션)
+);
+
+-- 메뉴별 재료 + 수량
+CREATE TABLE MENU_INGREDIENT (
+    menu_id        NUMBER NOT NULL,
+    ingredient_id  NUMBER NOT NULL,
+    unit_id        NUMBER,              -- '개', 'g' 등
+    quantity       NUMBER,              -- 100, 0.5 등
+    quantity_text  VARCHAR2(50),        -- '1/2개', '약간' 같은 표현 저장용 (옵션)
+    is_optional    CHAR(1) DEFAULT 'N', -- 선택 재료 여부 (Y/N)
+    PRIMARY KEY (menu_id, ingredient_id),
+    FOREIGN KEY (menu_id) REFERENCES MENU(menu_id),
+    FOREIGN KEY (ingredient_id) REFERENCES INGREDIENT(ingredient_id),
+    FOREIGN KEY (unit_id) REFERENCES UNIT(unit_id)
+);
+
+간단한 버전
+
+CREATE TABLE INGREDIENTS (
+    ID NUMBER PRIMARY KEY,
+    RECIPE_NAME VARCHAR2(100),
+    INGREDIENT_NAME VARCHAR2(100),
+    AMOUNT VARCHAR2(50)
+);
+
+간단한 조회 기능
+
+SELECT
+    r.RECIPE_ID,
+    r.RECIPE_NAME,
+    i.INGREDIENT_ID,
+    i.INGREDIENT_NAME,
+    i.AMOUNT
+FROM
+    RECIPE r
+    JOIN RECIPE_INGREDIENT i
+        ON r.RECIPE_ID = i.RECIPE_ID
+ORDER BY
+    r.RECIPE_ID,
+    i.INGREDIENT_ID;
+
+특정 레시피 이름 조회
+
+SELECT
+    r.RECIPE_NAME,
+    i.INGREDIENT_NAME,
+    i.AMOUNT
+FROM
+    RECIPE r
+    JOIN RECIPE_INGREDIENT i
+        ON r.RECIPE_ID = i.RECIPE_ID
+WHERE
+    r.RECIPE_NAME = '비빔밥'
+ORDER BY
+    i.INGREDIENT_ID;
+
+외래키 없는 내용 추가된 버전
+
+CREATE TABLE INGREDIENTS (
+    ID              NUMBER PRIMARY KEY,
+    RECIPE_NAME     VARCHAR2(100),      -- 어떤 요리에 들어가는지
+    INGREDIENT_NAME VARCHAR2(100),      -- 재료 이름
+    AMOUNT          VARCHAR2(50),       -- 재료 양
+
+    UNIT            VARCHAR2(20),       -- g, ml, 개 등 단위 (AMOUNT에서 분리 가능)
+    PREPARATION     VARCHAR2(100),      -- 다지기, 썰기, 데치기 등 전처리 과정
+    CATEGORY        VARCHAR2(50),       -- 고기, 채소, 양념, 소스 등 재료 분류
+    OPTIONAL_FLAG   CHAR(1),            -- 선택 재료 여부 (Y/N)
+    NOTES           VARCHAR2(200),      -- 기타 비고 (예: 대체재 가능 여부 등)
+    CALORIES        NUMBER,             -- 칼로리(선택적)
+    CREATED_AT      DATE DEFAULT SYSDATE, -- 등록 일시
+    UPDATED_AT      DATE                -- 수정 일시
+);
+
+UPDATED_AT 사용법
+
+UPDATE INGREDIENTS
+SET AMOUNT = '200g',
+    UPDATED_AT = SYSDATE
+WHERE ID = 1;

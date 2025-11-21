@@ -17,6 +17,8 @@ public class UserServiceImpl implements UserService {
 	@Override public List<UserDto> selectAll() { return dao.selectAll();}
 	@Override public UserDto select(int appUserId) {return dao.select(appUserId);}
 	@Override public UserDto selectEmail(String email) {return dao.selectEmail(email);}
-	@Override public int selectlogin(UserDto dto) {return dao.selectlogin(dto);}
-	
+	@Override public int selectLogin(UserDto dto) {return dao.selectLogin(dto);}
+	@Override public int iddouble(String email) {return dao.iddouble(email);}
+	@Override public int updateAdmin(UserDto dto) {return dao.updateAdmin(dto);}
+	@Override public int deleteAdmin(UserDto dto) {return dao.deleteAdmin(dto);}
 }

@@ -1,16 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../inc/header.jsp" %>
    <div class="container card  my-5">
       <h3  class="card-header"> MYPAGE </h3> 
 		<table class="table  table-striped  table-bordered  table-hover">
 			<tbody class="table-info ">
-				<tr> <th scope="row">Email</th>        <td> </td> </tr>
-				<tr> <th scope="row">MBTI TYPE</th>    <td> </td> </tr>
-				<tr> <th scope="row">회원가입날짜</th>    <td> </td></tr>
+				<tr> <th scope="row">Email</th>        <td>${dto.email}</td> </tr>
+				<tr> <th scope="row">MBTI TYPE</th>    <td>${dto.mbtiTypeId}</td> </tr>
+				<tr> <th scope="row">회원가입날짜</th>    <td>${dto.createdAt}</td></tr>
 			</tbody>
 		</table>
+		<p><a href="${pageContext.request.contextPath}/edit.users?appUserId=${dto.appUserId}" class="btn btn-danger">edit</a></p>
+		<p><a href="${pageContext.request.contextPath}/delete.users?appUserId=${dto.appUserId}" class="btn btn-primary">delete</a></p>
 		<!-- mvc1 - 코드가 뒤죽박죽 - 스파게티 코드라고해요~! -->
 	</div>
 <%@ include file="../inc/footer.jsp" %>
